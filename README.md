@@ -26,4 +26,4 @@
 
 List all routes, according to `config/routes.rb`
 
-`bundle install rake routes`
+`bundle exec rake routes`
