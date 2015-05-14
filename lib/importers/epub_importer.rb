@@ -10,7 +10,7 @@ class EpubImporter < Importer
     @author = @epub.metadata.creators[0].content
 
     @epub.resources.each do |res|
-      @parts << Importer::Part.new("", res.read) unless res.media_type.include?('css')
+      @parts << Importer::BookPart.new("", res.read) unless res.media_type.include?('css')
     end
   end
 end
