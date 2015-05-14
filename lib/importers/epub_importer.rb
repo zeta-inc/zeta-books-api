@@ -8,10 +8,6 @@ class EpubImporter < Importer
   def import
     @author = @epub.metadata.creators[0].content
 
-    @epub.resources.each do |res|
-      unless res.media_type.include?('css')
-        @parts << res.read
-      end
-    end
+    @epub.resources.each { |res| @parts << res.read unless res.media_type.include?('css') }
   end
 end
