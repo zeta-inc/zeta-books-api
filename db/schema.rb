@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514161342) do
+ActiveRecord::Schema.define(version: 20150514162324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 20150514161342) do
 
   add_index "documents", ["author_id"], name: "index_documents_on_author_id", using: :btree
 
+  create_table "parts", force: :cascade do |t|
+    t.string   "name"
+    t.json     "metadata"
+    t.text     "content"
+    t.integer  "next_id"
+    t.integer  "previous_id"
+    t.integer  "document_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "parts", ["document_id"], name: "index_parts_on_document_id", using: :btree
+  add_index "parts", ["previous_id"], name: "index_parts_on_previous_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "first_name"
@@ -46,4 +60,5 @@ ActiveRecord::Schema.define(version: 20150514161342) do
 
   add_foreign_key "authors", "users"
   add_foreign_key "documents", "authors"
+  add_foreign_key "parts", "documents"
 end
