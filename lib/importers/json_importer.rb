@@ -4,10 +4,6 @@ class JsonImporter < Importer
   end
 
   def import
-    ["name", "author", "metadata"].each do |attribute|
-      instance_variable_set(attribute, @data.fetch(attribute, ""))
-    end
-    
     @name = @data["name"]
     @author = @data["author"]
     @metadata = @data["metadata"]
