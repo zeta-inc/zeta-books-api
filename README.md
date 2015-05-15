@@ -24,7 +24,7 @@
 
 ## Deploy
 
-- Make sure to have the right `.pem` in `private/`
+- Make sure to have the right `.pem` around
 - `ssh-add` (to forward the SSH agent, or capistrano won't be able to checkout the projet)
 - `cap staging deploy`
 
