@@ -22,6 +22,12 @@
 
 `bundle exec rails console`
 
+## Deploy
+
+- Make sure to have the right `.pem` in `private/`
+- `ssh-add` (to forward the SSH agent, or capistrano won't be able to checkout the projet)
+- `cap staging deploy`
+
 ## Routes
 
 List all routes, according to `config/routes.rb`
