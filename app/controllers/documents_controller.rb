@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
   # What to output from a document
   def document_options
     {
-      :only => [:id, :name],
+      :only => [:id, :name, :parts_ids],
       :include => {
         :author => { :only => [:id, :author_name] }
       }
