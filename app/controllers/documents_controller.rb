@@ -2,7 +2,7 @@ class DocumentsController < ApplicationController
   respond_to :json
 
   def index
-    @documents = Document.joins(:author)
+    @documents = Document.includes(:author)
 
     respond_with @documents, document_options
   end
@@ -17,7 +17,7 @@ class DocumentsController < ApplicationController
   # What to output from a document
   def document_options
     {
-      :only => [:id, :name, :parts_ids],
+      :only => [:id, :name, :first_part_id, :parts_ids],
       :include => {
         :author => { :only => [:id, :author_name] }
       }
