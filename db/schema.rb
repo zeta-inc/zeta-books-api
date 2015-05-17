@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150514163243) do
   end
 
   add_index "parts", ["document_id"], name: "index_parts_on_document_id", using: :btree
+  add_index "parts", ["next_id"], name: "index_parts_on_next_id", using: :btree
   add_index "parts", ["previous_id"], name: "index_parts_on_previous_id", using: :btree
 
   create_table "users", force: :cascade do |t|
